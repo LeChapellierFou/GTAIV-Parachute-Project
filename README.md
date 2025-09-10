@@ -28,7 +28,6 @@ La variable ScriptActivated sert a activer ou desactiver le script parachute_pla
 Problème existant :
 - il y a un leger temps de latence pour que le joueur puisse controler le parachute.
 - pas de suppression du parachute en cas de colision de l'object.
-- les sons du parachute reste activer en cas de mort.
 - le parachute ne se supprima pas si le joueur touche un mur.
 
 [EN]
@@ -61,5 +60,4 @@ The ScriptActivated variable serves to activate or deactivate the parachute_play
 Existing problems:
 - there is a slight latency time for the player to be able to control the parachute.
 - no removal of the parachute in case of object collision.
-- the parachute sounds remain active in case of death.
 - the parachute does not get removed if the player touches a wall.
