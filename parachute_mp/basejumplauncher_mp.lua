@@ -9,7 +9,7 @@ local blips = {}
 local currentJump = {x=0.0, y=0.0, z=0.0, h=0.0}
 local parachuteWeaponId = 41
 local Zground = 0
-local version = "1.0.0"
+local version = "1.0.1"
 
 -- blip position
 local startjumpPoints = {
@@ -728,11 +728,8 @@ end
 function GiveParachute()
     local playerId = Game.GetPlayerId()
     local playerChar = Game.GetPlayerChar(playerId)
-	local model = Game.GetCharModel(playerChar)
-	local mp_hash = -2020305438
-	local fp_hash = -641875910
 
-	if model == tonumber(mp_hash) or model == tonumber(fp_hash) then
+	if IsPlayerModelsMP() then
 		Game.SetCharComponentVariation(playerChar, 8, 1, 0) -- parachute clothes
 		CreateParachuteSacObject()
 	else
