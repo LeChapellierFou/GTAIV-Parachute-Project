@@ -8,6 +8,10 @@ Le project est baser sur les scripts decompiled de rockstar games gta iv.
 
 Disponible uniquement pour tbogt !!!
 
+- Ajouter le dossier parachute_mp dans le dossier ressource.
+
+Fonctionne avec tout les modèles de joueur.
+
 Pour la communauter HappinessMP.
 Il n'est pas compatible pour Citizeniv ou autre.
 
@@ -27,7 +31,7 @@ Problème existant :
 - les sons du parachute reste activer en cas de mort.
 - le parachute ne se supprima pas si le joueur touche un mur.
 
-[ENG]
+[EN]
 
 Created by LeChappelierFou, 10/09/2025
 
@@ -36,6 +40,10 @@ Welcome to my parachute mod project.
 The project is based on decompiled scripts from Rockstar Games GTA IV.
 
 Available only for TBOGT!!!
+
+- Add the parachute_mp folder to the resources folder.
+
+Works with all player models
 
 For the HappinessMP community.
 It is not compatible with CitizenIV or others.
