@@ -284,6 +284,20 @@ function CreateParachuteSacObject()
 	end
 end
 
+function IsPlayerModelsMP()
+    local playerId = Game.GetPlayerId()
+    local playerChar = Game.GetPlayerChar(playerId)
+	local model = Game.GetCharModel(playerChar)
+    local mp_hash = -2020305438
+	local fp_hash = -641875910
+
+	if model == tonumber(mp_hash) or model == tonumber(fp_hash) then
+		return true
+	else
+		return false
+	end
+end
+
 function AttachParachuteObject()
 	local playerId = Game.GetPlayerId()
 	local playerChar = Game.GetPlayerChar(playerId)

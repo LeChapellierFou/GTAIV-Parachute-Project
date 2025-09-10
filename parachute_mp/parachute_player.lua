@@ -26,6 +26,7 @@ function StartFreefall(x, y, z, vx, vy, vz)
     
     if Game.IsCharPlayingAnim(playerChar, "PARACHUTE", "Free_Fall") then
         SwithParaState(3)
+        SwithMod(1)
     else
         -- Jouer l'animation de chute libre
         Game.TaskPlayAnimNonInterruptable(playerChar, "Free_Fall", "PARACHUTE", 1.0, true, true, true, false, 0)
@@ -595,6 +596,12 @@ local function MainLoop()
     
     -- Gérer les différents états
     HandleParachuteState(x, y, z, vx, vy, vz, height)
+
+    if not IsPlayerModelsMP() then
+        if parachuteObjectSac2 ~= nil then
+            Game.SetObjectVisible(parachuteObjectSac2, true)
+        end
+    end
     
     -- Vérifier les conditions de nettoyage
     if Game.IsCharDead(playerChar) then

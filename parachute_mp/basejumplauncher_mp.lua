@@ -743,7 +743,6 @@ end
 
 local ResetClearHelp = false
 
-
 local function PrintHelpEnter(sParam1, sVar5)
 	if (not Game.IsThisHelpMessageWithStringBeingDisplayed( sParam1, sVar5 ) and not ResetClearHelp) then 
 		--if (not Game.IsHelpMessageBeingDisplayed()) then 
@@ -801,18 +800,7 @@ local function MainLoop()
             SwithMod(4)
         end
     elseif state == 4 then
-        -- Attente que le joueur saute
-        if Game.IsKeyboardKeyJustPressed(57) or Game.IsButtonJustPressed(0, 0x10) then -- Barre espace ou button A
-            SwithMod(5)
-			--TimerA = Game.GetGameTimer()
-        end
-    elseif state == 5 then
-		local px, py, pz = Game.GetCharCoordinates(playerChar)
-		if pz < Zground and Game.IsCharInAir(playerChar) then
-			SwithMod(6)
-		end
-    elseif state == 6 then
-		-- attente que le joueur touche le sol
+
     end
 
 	if(state >= 1) then 
