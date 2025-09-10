@@ -1,0 +1,58 @@
+[FR]
+
+Realiser par LeChappelierFou, 10/09/2025 
+
+Bienvenue dans mon project du mod parachute.
+
+Le project est baser sur les scripts decompiled de rockstar games gta iv.
+
+Disponible uniquement pour tbogt !!!
+
+Pour la communauter HappinessMP.
+Il n'est pas compatible pour Citizeniv ou autre.
+
+N'esiter pas a partager des mise a jour sur mon Git-hub si vous avez resolu des problèmes.
+
+Le project inclus tout les point des basejump en mode multijoueur
+Une fois le parachute équiper, le joueur peut l'utiliser avec minimum 25m de hauteur
+
+L'utilisation du parachute n'est pas disponible pour les vehicule en l'air.
+
+La variable DebugMessage dans const.lua L.46 permet d'afficher ou pas les logs sur la console pour controler les bug ou les etats.
+La variable ScriptActivated sert a activer ou desactiver le script parachute_player.lua
+
+Problème existant :
+- il y a un leger temps de latence pour que le joueur puisse controler le parachute.
+- pas de suppression du parachute en cas de colision de l'object.
+- les sons du parachute reste activer en cas de mort.
+- le parachute ne se supprima pas si le joueur touche un mur.
+
+[ENG]
+
+
+Created by LeChappelierFou, 10/09/2025
+
+Welcome to my parachute mod project.
+
+The project is based on decompiled scripts from Rockstar Games GTA IV.
+
+Available only for TBOGT!!!
+
+For the HappinessMP community.
+It is not compatible with CitizenIV or others.
+
+Don't hesitate to share updates on my GitHub if you have resolved problems.
+
+The project includes all the basejump points in multiplayer mode
+Once the parachute is equipped, the player can use it with a minimum height of 25m
+
+The use of the parachute is not available for vehicles in the air.
+
+The DebugMessage variable in const.lua L.46 allows to display or not the logs on the console to control bugs or states.
+The ScriptActivated variable serves to activate or deactivate the parachute_player.lua script
+
+Existing problems:
+- there is a slight latency time for the player to be able to control the parachute.
+- no removal of the parachute in case of object collision.
+- the parachute sounds remain active in case of death.
+- the parachute does not get removed if the player touches a wall.

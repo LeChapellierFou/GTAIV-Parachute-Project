@@ -1,0 +1,10 @@
+<meta type="lua">
+	<script type="client" src="const.lua" />	
+	<script type="client" src="utils.lua" />	
+	
+	<script type="client" src="basejumplauncher_mp.lua" />	
+
+	<script type="client" src="parachute_functions.lua" />		
+	<script type="client" src="parachute_player.lua" />		
+	
+</meta>
