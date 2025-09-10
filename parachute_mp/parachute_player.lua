@@ -2,7 +2,7 @@
     Parachute Project GTA IV By LeChapellierFou, 10/09/2025
 ]]
 
-local version = "1.0.0"
+local version = "1.0.1"
 
 -- Commencer la chute libre
 function StartFreefall(x, y, z, vx, vy, vz)
@@ -29,7 +29,7 @@ function StartFreefall(x, y, z, vx, vy, vz)
         SwithMod(1)
     else
         -- Jouer l'animation de chute libre
-        Game.TaskPlayAnimNonInterruptable(playerChar, "Free_Fall", "PARACHUTE", 1.0, true, true, true, false, 0)
+        Game.TaskPlayAnimNonInterruptable(playerChar, "Free_Fall", "PARACHUTE", 1.0, true, true, true, false, -2)
     end
     
     -- Définir les propriétés du personnage
@@ -94,10 +94,6 @@ end
 local function AnimParaRemove()
     local playerId = Game.GetPlayerId()
     local playerChar = Game.GetPlayerChar(playerId)
-
-    local model = Game.GetCharModel(playerChar)
-	local mp_hash = -2020305438
-	local fp_hash = -641875910
     
     if (parachuteObjectSac ~= nil) then
         -- supprime le second sac 
@@ -112,7 +108,7 @@ local function AnimParaRemove()
         
         -- Jouer l'animation de retrait du sac (plus lente pour plus de réalisme)
         Game.PlayObjectAnim(parachuteObjectSac, "obj_chute_off", "PARACHUTE", 1000.0, false, true)
-        if model == tonumber(mp_hash) or model == tonumber(fp_hash) then
+        if IsPlayerModelsMP() then
             Game.SetCharComponentVariation(playerChar, 8, 0, 0)
         end
 

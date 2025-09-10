@@ -107,6 +107,10 @@ function CleanupParachute()
         SoundId_Decend = nil
     end
 
+    local soundId = Game.GetSoundId()
+    Game.StopSound(soundId)
+    Game.ReleaseSoundId(soundId)
+
     --Game.AmbientAudioBankNoLongerNeeded()
     
     -- Nettoyer le véhicule
@@ -132,6 +136,12 @@ function CleanupParachute()
         Game.DeleteObject(parachuteObjectSac)
         parachuteObjectSac = nil
     end
+
+    if parachuteObjectSac2 and Game.DoesObjectExist(parachuteObjectSac2) then
+        Game.DeleteObject(parachuteObjectSac2)
+        parachuteObjectSac2 = nil
+    end
+    
 
     Game.SetCharComponentVariation(playerChar, 8, 0, 0)
 	
