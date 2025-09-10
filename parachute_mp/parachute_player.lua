@@ -102,8 +102,6 @@ local function AnimParaRemove()
 			parachuteObjectSac2 = nil
 		end
 		-- Activer le sac de parachute
-        Game.SetObjectDynamic(parachuteObjectSac, true)
-        Game.SetObjectCollision(parachuteObjectSac, true)
         Game.SetObjectVisible(parachuteObjectSac, true)
         
         -- Jouer l'animation de retrait du sac (plus lente pour plus de réalisme)

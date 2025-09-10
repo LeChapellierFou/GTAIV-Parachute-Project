@@ -268,10 +268,8 @@ function CreateFakeParachuteSac()
 	
 	parachuteObjectSac2 = Game.CreateObject(1276771907, x, y, z - 25.0, false)
 	if(parachuteObjectSac2 ~= nil) then 
-		Game.AttachObjectToPed(parachuteObjectSac2, playerChar, 1202, 0.2980, 0.0025, 0.0, 0.0, 1.5900, 0.0, true)
-		Game.SetObjectDynamic(parachuteObjectSac2, false)
-		Game.SetObjectCollision(parachuteObjectSac2, false)
 		Game.SetObjectVisible(parachuteObjectSac2, true)
+		Game.AttachObjectToPed(parachuteObjectSac2, playerChar, 1202, 0.2980, 0.0025, 0.0, 0.0, 1.5900, 0.0, true)
 		DebugPrint("ParachuteSacObject fake created")
 	end
 end
@@ -284,12 +282,8 @@ function CreateParachuteSacObject()
 	
 	parachuteObjectSac = Game.CreateObject(1276771907, x, y, z - 25.0, false)
 	if(parachuteObjectSac ~= nil) then 
-		Game.AttachObjectToPed(parachuteObjectSac, playerChar, 1202, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, true)
-		Game.SetObjectDynamic(parachuteObjectSac, false)
-		Game.SetObjectCollision(parachuteObjectSac, false)
 		Game.SetObjectVisible(parachuteObjectSac, false)
-		--Game.SetActivateObjectPhysicsAsSoonAsItIsUnfrozen(parachuteObjectSac, true)
-		Game.MarkModelAsNoLongerNeeded(1276771907)
+		Game.AttachObjectToPed(parachuteObjectSac, playerChar, 1202, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, true)
         DebugPrint("ParachuteSacObject created")
 	end
 end
@@ -320,7 +314,6 @@ function AttachParachuteObject()
         parachuteObject = Game.CreateObject(1490460832, x, y, z + 10.0, true)
         if parachuteObject then
             Game.AttachObjectToPed(parachuteObject, playerChar, 0, 0.025, -0.125, 5.45, 0.0, 0.0, 0.0, true)
-            --Game.SetObjectCollision(parachuteObject, true)
             DebugPrint("ParachuteObject attached to ped")
         end
     end
