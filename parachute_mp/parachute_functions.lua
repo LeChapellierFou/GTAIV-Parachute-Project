@@ -36,6 +36,18 @@ function InitializeParachute()
     end
 end
 
+function AddEffectsOnPlayer()
+    local playerId = Game.GetPlayerId()
+    local playerChar = Game.GetPlayerChar(playerId)
+    local playerIndex = Game.ConvertIntToPlayerindex(playerId)
+    local r, g, b = Game.GetPlayerRgbColour(playerIndex);
+
+    if(Ptfx == nil) then
+		Ptfx = Game.StartPtfxOnPedBone("E2_mp_para_smoke", playerChar, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 420, 1.0)
+        Game.UpdatePtfxTint(Ptfx, r/255, g/255, b/255, 255 );
+    end
+end
+
 -- Fonction de mise à jour de la vélocité (équivalent à sub_6947 dans le script original)
 function UpdateCharacterVelocity()
     local playerId = Game.GetPlayerId()
@@ -110,6 +122,11 @@ function CleanupParachute()
     local soundId = Game.GetSoundId()
     Game.StopSound(soundId)
     Game.ReleaseSoundId(soundId)
+
+    if Ptfx ~= nil then
+        Game.StopPtfx(Ptfx)
+        Ptfx = nil
+    end
 
     --Game.AmbientAudioBankNoLongerNeeded()
     
@@ -268,8 +285,10 @@ function CreateFakeParachuteSac()
 	
 	parachuteObjectSac2 = Game.CreateObject(1276771907, x, y, z - 25.0, false)
 	if(parachuteObjectSac2 ~= nil) then 
-		Game.SetObjectVisible(parachuteObjectSac2, true)
 		Game.AttachObjectToPed(parachuteObjectSac2, playerChar, 1202, 0.2980, 0.0025, 0.0, 0.0, 1.5900, 0.0, true)
+		Game.SetObjectDynamic(parachuteObjectSac2, false)
+		Game.SetObjectCollision(parachuteObjectSac2, false)
+		Game.SetObjectVisible(parachuteObjectSac2, true)
 		DebugPrint("ParachuteSacObject fake created")
 	end
 end
@@ -282,8 +301,12 @@ function CreateParachuteSacObject()
 	
 	parachuteObjectSac = Game.CreateObject(1276771907, x, y, z - 25.0, false)
 	if(parachuteObjectSac ~= nil) then 
-		Game.SetObjectVisible(parachuteObjectSac, false)
 		Game.AttachObjectToPed(parachuteObjectSac, playerChar, 1202, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, true)
+		Game.SetObjectDynamic(parachuteObjectSac, false)
+		Game.SetObjectCollision(parachuteObjectSac, false)
+		Game.SetObjectVisible(parachuteObjectSac, false)
+		--Game.SetActivateObjectPhysicsAsSoonAsItIsUnfrozen(parachuteObjectSac, true)
+		Game.MarkModelAsNoLongerNeeded(1276771907)
         DebugPrint("ParachuteSacObject created")
 	end
 end
@@ -314,6 +337,7 @@ function AttachParachuteObject()
         parachuteObject = Game.CreateObject(1490460832, x, y, z + 10.0, true)
         if parachuteObject then
             Game.AttachObjectToPed(parachuteObject, playerChar, 0, 0.025, -0.125, 5.45, 0.0, 0.0, 0.0, true)
+            --Game.SetObjectCollision(parachuteObject, true)
             DebugPrint("ParachuteObject attached to ped")
         end
     end

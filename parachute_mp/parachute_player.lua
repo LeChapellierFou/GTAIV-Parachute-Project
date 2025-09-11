@@ -2,7 +2,7 @@
     Parachute Project GTA IV By LeChapellierFou, 10/09/2025
 ]]
 
-local version = "1.0.1"
+local version = "1.0.2"
 
 -- Commencer la chute libre
 function StartFreefall(x, y, z, vx, vy, vz)
@@ -102,6 +102,8 @@ local function AnimParaRemove()
 			parachuteObjectSac2 = nil
 		end
 		-- Activer le sac de parachute
+        Game.SetObjectDynamic(parachuteObjectSac, true)
+        Game.SetObjectCollision(parachuteObjectSac, true)
         Game.SetObjectVisible(parachuteObjectSac, true)
         
         -- Jouer l'animation de retrait du sac (plus lente pour plus de réalisme)
@@ -191,6 +193,11 @@ local function HandleRagdoll(x, y, z, vx, vy, vz, height)
             DebugPrint("currentHealth: " .. currentHealth)
             Game.SetCharHealth(playerChar, currentHealth)
             IsDamageCalculated = true
+        end
+
+        if Ptfx ~= nil then
+            Game.StopPtfx(Ptfx)
+            Ptfx = nil
         end
         
         -- Étape 1: Animation de disparition de la voile du parachute
@@ -328,6 +335,15 @@ local function HandleFreefallControls()
     if leftY == 0 and leftX == 0 then
         if (not Game.IsCharPlayingAnim( playerChar, "PARACHUTE", "Free_Fall" )) then 
             Game.TaskPlayAnimNonInterruptable(playerChar, "Free_Fall", "PARACHUTE", 4.0, false, true, true, false, 0)
+        end
+    end
+
+    if Game.IsGameKeyboardKeyJustPressed(29) or Game.IsButtonJustPressed(0, 0x12) then
+        if Ptfx ~= nil then
+            Game.StopPtfx(Ptfx)
+            Ptfx = nil
+        else
+            AddEffectsOnPlayer()
         end
     end
 end
@@ -498,6 +514,15 @@ local function HandleDeployedControls()
     if leftY == 0 and leftX == 0 then
         if (not Game.IsCharPlayingAnim( playerChar, "PARACHUTE", "Hang_Idle" )) then 
             Game.TaskPlayAnimNonInterruptable(playerChar, "Hang_Idle", "PARACHUTE", 4.0, true, true, true, true, 0)
+        end
+    end
+
+    if Game.IsGameKeyboardKeyJustPressed(29) or Game.IsButtonJustPressed(0, 0x12) then
+        if Ptfx ~= nil then
+            Game.StopPtfx(Ptfx)
+            Ptfx = nil
+        else
+            AddEffectsOnPlayer()
         end
     end
 end
